@@ -1,29 +1,20 @@
 # SwiftSyntaxSerializer
 
-`SwiftSyntaxSerializer` is a command line tool that lets you parse Swift code into
-a [JSON-LD][jsonld] serialization format and vice versa.
+`SwiftSyntaxSerializer` is a command line tool that lets you parse Swift code into a [JSON-LD][jsonld] serialization format and vice versa.
 
-This tool is part of the [Whole Platform][wholeplatform].
-The installation of this tool is necessary in order to enable the native Swift persistence
-of the Swift and SwiftSyntax languages.
+This tool is part of the [Whole Platform][wholeplatform]; the installation of this tool is necessary in order to enable the native Swift persistence of the Swift and SwiftSyntax languages.
 
-`SwiftSyntaxSerializer` depends on [SwiftSyntax][swiftsyntax] for parsing and unparsing
-the Swift code and on [SwiftFormat][swiftformat] for formatting the Whole generated code.
+`SwiftSyntaxSerializer` depends on [SwiftSyntax][swiftsyntax] for parsing and unparsing the Swift code and on [SwiftFormat][swiftformat] for formatting the Whole generated code.
 
 ## Requirements
 
-The version of the standalone parsing library that is distributed as part of the Swift
-toolchain must match the one expected by our [SwiftSyntax][swiftsyntax] dependency.
+The version of the standalone parsing library that is distributed as part of the Swift toolchain must match the one expected by [SwiftSyntax][swiftsyntax]. So you should check out and build `SwiftSyntaxSerializer` from the branch that is compatible with the version of Swift you are using. As an alternative you can install and switch to a compatible Swift toolchain.
 
-So you should check out and build `SwiftSyntaxSerializer` from the branch that is
-compatible with the version of Swift you are using.
-As an alternative you can install and switch to a compatible Swift toolchain.
+The last supported version of Swift is: 5.1. Check from from the command line the version of Swift you are using.
 
-The last supported version of Swift is: 5.1.
-Check from from the command line the version of Swift you are using.
-
-```
-swift --version
+```sh
+$ swift --version
+Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 ```
 
 ## Installation
@@ -39,8 +30,8 @@ cp .build/release/SwiftSyntaxSerializer /usr/local/bin
 
 ## License
 
-The Whole Platform is Copyright 2004-2020 Riccardo Solmi.
-All rights reserved.
+The Whole Platform is Copyright 2004-2020 Riccardo Solmi. All rights reserved.
+
 The Whole Platform is free software: you can redistribute it and/or modify
 it under the terms of the GNU Lesser General Public License as published
 by the Free Software Foundation, either version 3 of the License, or
