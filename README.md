@@ -24,7 +24,7 @@ Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 Clone the repository and build the executable with the [Swift Package Manager][packagemanager] included with Swift.
 
 ```
-git clone https://github.com/riccardosolmi/whole-swift-syntaxserializer.git
+git clone https://github.com/wholeplatform/whole-swift-syntaxserializer.git
 cd whole-swift-syntaxserializer
 swift build -c release
 cp .build/release/SwiftSyntaxSerializer /usr/local/bin
@@ -45,7 +45,7 @@ or FITNESS FOR A PARTICULAR PURPOSE.
 See the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.txt) for more details.
 
 
-[ci badge]: https://github.com/riccardosolmi/whole-swift-syntaxserializer/workflows/CI/badge.svg
+[ci badge]: https://github.com/wholeplatform/whole-swift-syntaxserializer/workflows/CI/badge.svg
 [wholeplatform]: https://github.com/wholeplatform/whole
 [swiftsyntax]: https://github.com/apple/swift-syntax
 [swiftformat]: https://github.com/apple/swift-format
