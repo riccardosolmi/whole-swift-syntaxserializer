@@ -1,5 +1,7 @@
 # SwiftSyntaxSerializer
 
+![CI][ci badge]
+
 `SwiftSyntaxSerializer` is a command line tool that lets you parse Swift code into a [JSON-LD][jsonld] serialization format and vice versa.
 
 This tool is part of the [Whole Platform][wholeplatform]; the installation of this tool is necessary in order to enable the native Swift persistence of the Swift and SwiftSyntax languages.
@@ -10,7 +12,7 @@ This tool is part of the [Whole Platform][wholeplatform]; the installation of th
 
 The version of the standalone parsing library that is distributed as part of the Swift toolchain must match the one expected by [SwiftSyntax][swiftsyntax]. So you should check out and build `SwiftSyntaxSerializer` from the branch that is compatible with the version of Swift you are using. As an alternative you can install and switch to a compatible Swift toolchain.
 
-The last supported version of Swift is: 5.1. Check from from the command line the version of Swift you are using.
+The last supported version of Swift is: 5.1. Check from the command line the version of Swift you are using.
 
 ```sh
 $ swift --version
@@ -43,6 +45,7 @@ or FITNESS FOR A PARTICULAR PURPOSE.
 See the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.txt) for more details.
 
 
+[ci badge]: https://github.com/riccardosolmi/whole-swift-syntaxserializer/workflows/CI/badge.svg
 [wholeplatform]: https://github.com/wholeplatform/whole
 [swiftsyntax]: https://github.com/apple/swift-syntax
 [swiftformat]: https://github.com/apple/swift-format
