@@ -6,6 +6,7 @@ let package = Package(
     name: "SwiftSyntaxSerializer",
     products: [
       .executable(name: "SwiftSyntaxSerializer", targets: ["SwiftSyntaxSerializer"]),
+      .library(name: "SwiftSourcePersistence", targets: ["SwiftSourcePersistence"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "0.0.1")),
@@ -15,15 +16,20 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "SwiftSourcePersistence",
+            dependencies: [
+                .product(name: "SwiftSyntax", package: "swift-syntax"),
+                .product(name: "SwiftFormat", package: "swift-format")]),
+        .target(
             name: "SwiftSyntaxSerializer",
             dependencies: [
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
-                .product(name: "SwiftSyntax", package: "swift-syntax"),
-                .product(name: "SwiftFormat", package: "swift-format")]),
+                "SwiftSourcePersistence",
+            ]),
         .testTarget(
             name: "SwiftSyntaxSerializerTests",
             dependencies: [
-                "SwiftSyntaxSerializer",
+                "SwiftSourcePersistence",
             ]),
     ]
 )

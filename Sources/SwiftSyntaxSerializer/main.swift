@@ -1,8 +1,6 @@
 import Foundation
 import ArgumentParser
-import SwiftSyntax
-import SwiftFormat
-import SwiftFormatConfiguration
+import SwiftSourcePersistence
 
 
 extension FileHandle : TextOutputStream {
@@ -23,10 +21,18 @@ struct SwiftSyntaxSerializer: ParsableCommand {
 
             """)
 
-    @Argument(help: "parse - Parse Swift to JSON; unparse - Unparse JSON to Swift; format - Format JSON to Swift")
+    @Flag(name: .shortAndLong, help: "Print version information and exit")
+    var version: Bool
+    
+    @Argument(default: .parse, help: "Select the transformation to apply: parse, unparse, or format")
     var mode: Mode
 
     func run() throws {
+        if (version) {
+            print("SwiftSyntaxSerializer version 1.1.0")
+            throw ExitCode.success
+        }
+
         var data: Data
         var input: String = ""
         repeat {
@@ -34,24 +40,17 @@ struct SwiftSyntaxSerializer: ParsableCommand {
             input += String(data: data, encoding: .utf8)!
         } while (data.count > 0)
 
+        var standardOutput = FileHandle.standardOutput
+
         switch (mode) {
         case .parse:
-            let syntax = try SyntaxParser.parse(source: input)
-            var visitor = SwiftSyntaxToJSONVisitor()
-            let jsonData = try visitor.data(withSyntaxNode: syntax, options: [.prettyPrinted])
-            print(String(bytes: jsonData, encoding: .utf8)!)
+            try swiftToJSON(input, to: &standardOutput)
 
         case .unparse:
-            let factory = JSONToSwiftSyntaxFactory()
-            let syntax = try factory.jsonObject(with: input.data(using: .utf8)!)
-            print(syntax!)
+            try jsonToSwift(input, to: &standardOutput)
 
         case .format:
-            let factory = JSONToSwiftSyntaxFactory()
-            let syntax = try factory.jsonObject(with: input.data(using: .utf8)!)
-            let formatter = SwiftFormatter(configuration: Configuration())
-            var standardOutput = FileHandle.standardOutput
-            try formatter.format(syntax: syntax as! SourceFileSyntax, assumingFileURL: nil, to: &standardOutput)
+            try jsonToFormattedSwift(input, to: &standardOutput)
         }
     }
 }
